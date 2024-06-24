@@ -71,7 +71,7 @@
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q5" v-if="level === 6">
+		<div id="q5" v-if="level === 6 && Q1 === 1">
 			<h2>Pour ce trajet en train, quelle sera votre gare de descente ?</h2>
 			<div>
 				<GareSelector v-model="Q5" />
@@ -79,6 +79,19 @@
 			<br>
 			<h2>Ou</h2>
 			<h2>Pour ce trajet en car, quelle sera votre arret de descente ?</h2>
+			<input class="form-control" type="text" v-model="Q5" placeholder="Arret Remi">
+			<button v-if="Q5" @click="next" class="btn-next">Suivant</button>
+			<button @click="back" class="btn-return">retour</button>
+		</div>
+
+		<div id="q5" v-if="level === 6 && Q1 === 2">
+			<h2>Pour ce trajet en train (car), quelle a été votre gare SNCF (arrêt) de montée ?</h2>
+			<div>
+				<GareSelector v-model="Q5" />
+			</div>
+			<br>
+			<h2>Ou</h2>
+			<h2>Pour ce trajet en train (car), quelle a été votre gare SNCF (arrêt) de montée ?</h2>
 			<input class="form-control" type="text" v-model="Q5" placeholder="Arret Remi">
 			<button v-if="Q5" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
