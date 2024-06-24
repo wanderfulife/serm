@@ -76,8 +76,8 @@
 			<div>
 				<GareSelector v-model="Q5" />
 			</div>
-			<h2>Ou</h2>
 			<br>
+			<h2>Ou</h2>
 			<h2>Pour ce trajet en car, quelle sera votre arret de descente ?</h2>
 			<input class="form-control" type="text" v-model="Q5" placeholder="Arret Remi">
 			<button v-if="Q5" @click="next" class="btn-next">Suivant</button>
@@ -134,7 +134,7 @@
 		</div>
 
 		<div id="q9" v-if="level === 10">
-			<h1>A quelle fréquence faites-vous le même trajet qu'aujourd'hui ? </h1>
+			<h2>A quelle fréquence faites-vous le même trajet qu'aujourd'hui ? </h2>
 			<select v-model="Q9" class="form-control">
 				<option v-for="option in frequence" :key="option.id" :value="option.output">
 					{{ option.text }}
@@ -146,7 +146,7 @@
 		</div>
 
 		<div id="q10" v-if="level === 11">
-			<h1>Quelle est votre titre de transport ?</h1>
+			<h2>Quelle est votre titre de transport ?</h2>
 			<select v-model="Q10" class="form-control">
 				<option v-for="option in titre" :key="option.id" :value="option.output">
 					{{ option.text }}
@@ -157,7 +157,7 @@
 		</div>
 
 		<div id="q11" v-if="level === 12">
-			<h1>Sur quel type de support ?</h1>
+			<h2>Sur quel type de support ?</h2>
 			<select v-model="Q11" class="form-control">
 				<option v-for="option in support" :key="option.id" :value="option.output">
 					{{ option.text }}
@@ -168,7 +168,7 @@
 		</div>
 
 		<div id="q12" v-if="level === 13">
-			<h1>L'interviewé avait-il un(e) vélo/trottinette/mono roue ?</h1>
+			<h2>L'interviewé avait-il un(e) vélo/trottinette/mono roue ?</h2>
 			<select v-model="Q12" class="form-control">
 				<option v-for="option in q12" :key="option.id" :value="option.output">
 					{{ option.text }}
@@ -179,20 +179,20 @@
 		</div>
 
 		<div id="q13" v-if="level === 14">
-			<h1>Noter le numéro du quai</h1>
+			<h2>Noter le numéro du quai</h2>
 			<input class="form-control" type="text" v-model="Q13" placeholder="Precisions">
 			<button v-if="Q13" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
 		<div id="q14" v-if="level === 15">
-			<h1>Noter le numéro du train/car </h1>
+			<h2>Noter le numéro du train/car </h2>
 			<input class="form-control" type="text" v-model="Q14" placeholder="Precisions">
 			<button v-if="Q14" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div>
+		<div id="end" v-if="level === 16">
 			<button @click="submitSurvey" class="btn-next">FINIR QUESTIONNAIRE</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
