@@ -47,106 +47,113 @@
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q3" v-if="level === 4">
+		<div id="DESTINATION" v-if="level === 4 && Q1 === 2">
+			<h2>Pour ce trajet en train (car), quelle a été votre gare SNCF (arrêt) de montée ?</h2>
+			<div>
+				<GareSelector v-model="DESTINATION" />
+			</div>
+			<br>
+			<h2>Ou</h2>
+			<h2>Pour ce trajet en train (car), quelle a été votre gare SNCF (arrêt) de montée ?</h2>
+			<input class="form-control" type="text" v-model="DESTINATION" placeholder="Arret Remi">
+			<button v-if="DESTINATION" @click="next" class="btn-next">Suivant</button>
+			<button @click="back" class="btn-return">retour</button>
+		</div>
+
+		<div id="MORIGINE" v-if="level === 4 && Q1 === 1||level === 5 && Q1 === 2">
 			<h2>Ce lieu est-il …. ? </h2>
-			<select v-model="Q3" class="form-control">
+			<select v-model="MORIGINE" class="form-control">
 				<option v-for="option in motif" :key="option.id" :value="option.output">
 					{{ option.text }}
 				</option>
 			</select>
-			<input v-if="Q3 === 8" class="form-control" type="text" v-model="Q3_DETAIL" placeholder="Precisions">
-			<button v-if="Q3" @click="next" class="btn-next">Suivant</button>
+			<input v-if="MORIGINE === 8" class="form-control" type="text" v-model="MORIGINE_DETAIL"
+				placeholder="Precisions">
+			<button v-if="MORIGINE" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q4" v-if="level === 5">
-			<h2>Par quel mode de transport principal êtes-vous arrivés à la gare SNCF (ou routière) ? </h2>
-			<select v-model="Q4" class="form-control">
+		<div id="MRABATTEMENT_A" v-if="level === 5 && Q1 === 1 || level === 6 && Q1 === 2">
+			<h2>Par quel mode de transport principal etes-vous arrivés la gare SNCF (ou routière) ?</h2>
+			<select v-model="MRABATTEMENT_A" class="form-control">
 				<option v-for="option in mode" :key="option.id" :value="option.output">
 					{{ option.text }}
 				</option>
 			</select>
-			<input v-if="Q4 === 9" class="form-control" type="text" v-model="Q4_DETAIL" placeholder="Precisions">
-			<button v-if="Q4" @click="next" class="btn-next">Suivant</button>
+			<input v-if="MRABATTEMENT_A === 9" class="form-control" type="text" v-model="MRABATTEMENT_A_DETAIL"
+				placeholder="Precisions">
+			<button v-if="MRABATTEMENT_A" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q5" v-if="level === 6 && Q1 === 1">
+		<div id="DESTINATION" v-if="level === 6 && Q1 === 1">
 			<h2>Pour ce trajet en train, quelle sera votre gare de descente ?</h2>
 			<div>
-				<GareSelector v-model="Q5" />
+				<GareSelector v-model="DESTINATION" />
 			</div>
 			<br>
 			<h2>Ou</h2>
 			<h2>Pour ce trajet en car, quelle sera votre arret de descente ?</h2>
-			<input class="form-control" type="text" v-model="Q5" placeholder="Arret Remi">
-			<button v-if="Q5" @click="next" class="btn-next">Suivant</button>
+			<input class="form-control" type="text" v-model="DESTINATION" placeholder="Arret Remi">
+			<button v-if="DESTINATION" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q5" v-if="level === 6 && Q1 === 2">
-			<h2>Pour ce trajet en train (car), quelle a été votre gare SNCF (arrêt) de montée ?</h2>
-			<div>
-				<GareSelector v-model="Q5" />
-			</div>
-			<br>
-			<h2>Ou</h2>
-			<h2>Pour ce trajet en train (car), quelle a été votre gare SNCF (arrêt) de montée ?</h2>
-			<input class="form-control" type="text" v-model="Q5" placeholder="Arret Remi">
-			<button v-if="Q5" @click="next" class="btn-next">Suivant</button>
-			<button @click="back" class="btn-return">retour</button>
-		</div>
 
-		<div id="q6" v-if="level === 7">
+
+		<div id="MOTIF_DESTINATION" v-if="level === 7 && Q1 === 1 || level === 8 && Q1 === 2">
 			<h2>Ce lieu est-il …. ? </h2>
-			<select v-model="Q6" class="form-control">
+			<select v-model="MOTIF_DESTINATION" class="form-control">
 				<option v-for="option in motif" :key="option.id" :value="option.output">
 					{{ option.text }}
 				</option>
 			</select>
-			<input v-if="Q6 === 8" class="form-control" type="text" v-model="Q6_DETAIL" placeholder="Precisions">
-			<button v-if="Q6" @click="next" class="btn-next">Suivant</button>
+			<input v-if="MOTIF_DESTINATION === 8" class="form-control" type="text" v-model="MOTIF_DESTINATION_DETAIL"
+				placeholder="Precisions">
+			<button v-if="MOTIF_DESTINATION" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q7" v-if="level === 8">
+		<div id="DEST_FIN" v-if="level === 8 && Q1 === 1 ||level === 7 && Q1 === 2">
 			<h2>Quelle est votre destination finale à la descente du train (car) ?</h2>
 			<div>
-				<CommuneSelector v-model="Q7" />
+				<CommuneSelector v-model="DEST_FIN" />
 			</div>
-			<div v-if="Q7 === 'TOURS - 37261'">
+			<div v-if="DEST_FIN === 'TOURS - 37261'">
 				<h2>Precisez le quartier</h2>
-				<select v-model="Q7qt" class="form-control">
+				<select v-model="DEST_FINqt" class="form-control">
 					<option v-for="option in tours" :key="option.id" :value="option.output">
 						{{ option.text }}
 					</option>
 				</select>
 			</div>
-			<div v-if="Q7 === 'ORLEANS - 45234'">
+			<div v-if="DEST_FIN === 'ORLEANS - 45234'">
 				<h2>Precisez le quartier</h2>
-				<select v-model="Q7qo" class="form-control">
+				<select v-model="DEST_FINqo" class="form-control">
 					<option v-for="option in orleans" :key="option.id" :value="option.output">
 						{{ option.text }}
 					</option>
 				</select>
 			</div>
-			<button v-if="Q7" @click="next" class="btn-next">Suivant</button>
+			<button v-if="DEST_FIN" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q8" v-if="level === 9">
-			<h2>Par quel mode de transport allez-vous quittez la gare SNCF (ou routière) ?</h2>
-			<select v-model="Q8" class="form-control">
+		<div id="MRABATTEMENT_S" v-if="level === 9 && Q1 === 1 || level === 9 && Q1 === 2">
+			<h2>Par quel mode de transport allez-vous quittez la gare SNCF (ou routière) ? </h2>
+			<select v-model="MRABATTEMENT_S" class="form-control">
 				<option v-for="option in mode" :key="option.id" :value="option.output">
 					{{ option.text }}
 				</option>
 			</select>
-			<input v-if="Q8 === 9" class="form-control" type="text" v-model="Q8_DETAIL" placeholder="Precisions">
-			<button v-if="Q8" @click="next" class="btn-next">Suivant</button>
+			<input v-if="MRABATTEMENT_S === 9" class="form-control" type="text" v-model="MRABATTEMENT_S_DETAIL"
+				placeholder="Precisions">
+			<button v-if="MRABATTEMENT_S" @click="next" class="btn-next">Suivant</button>
 			<button @click="back" class="btn-return">retour</button>
 		</div>
 
-		<div id="q9" v-if="level === 10">
+
+		<div id="q9" v-if="level === 10 ">
 			<h2>A quelle fréquence faites-vous le même trajet qu'aujourd'hui ? </h2>
 			<select v-model="Q9" class="form-control">
 				<option v-for="option in frequence" :key="option.id" :value="option.output">
@@ -237,17 +244,18 @@ const Q1 = ref('');
 const Q2 = ref('');
 const Q2qt = ref('');
 const Q2qo = ref('');
-const Q3 = ref('');
-const Q3_DETAIL = ref('');
-const Q4 = ref('');
-const Q4_DETAIL = ref('');
-const Q5 = ref('');
-const Q6 = ref('');
-const Q6_DETAIL = ref('');
-const Q7 = ref('');
-const Q7qt = ref('');
-const Q7qo = ref('');
-const Q8 = ref('');
+const MORIGINE = ref('');
+const MORIGINE_DETAIL = ref('');
+const DESTINATION = ref('');
+const MOTIF_DESTINATION = ref('');
+const MOTIF_DESTINATION_DETAIL = ref('');
+const DEST_FIN = ref('');
+const DEST_FINqt = ref('');
+const DEST_FINqo = ref('');
+const MRABATTEMENT_A = ref('');
+const MRABATTEMENT_A_DETAIL = ref('');
+const MRABATTEMENT_S = ref('');
+const MRABATTEMENT_S_DETAIL = ref('');
 const Q9 = ref('');
 const Q9_DETAIL = ref('');
 const Q10 = ref('');
@@ -296,17 +304,18 @@ const submitSurvey = async () => {
 		Q2: Q2.value,
 		Q2qt: Q2qt.value,
 		Q2qo: Q2qo.value,
-		Q3: Q3.value,
-		Q3_DETAIL: Q3_DETAIL.value,
-		Q4: Q4.value,
-		Q4_DETAIL: Q4_DETAIL.value,
-		Q5: Q5.value,
-		Q6: Q6.value,
-		Q6_DETAIL: Q6_DETAIL.value,
-		Q7: Q7.value,
-		Q7qt: Q7qt.value,
-		Q7qo: Q7qo.value,
-		Q8: Q8.value,
+		MORIGINE: MORIGINE.value,
+		MORIGINE_DETAIL: MORIGINE_DETAIL.value,
+		DESTINATION: DESTINATION.value,
+		MOTIF_DESTINATION: MOTIF_DESTINATION.value,
+		MOTIF_DESTINATION_DETAIL: MOTIF_DESTINATION_DETAIL.value,
+		DEST_FIN: DEST_FIN.value,
+		DEST_FINqt: DEST_FINqt.value,
+		DEST_FINqo: DEST_FINqo.value,
+		MRABATTEMENT_A: MRABATTEMENT_A.value,
+		MRABATTEMENT_A_DETAIL: MRABATTEMENT_A_DETAIL.value,
+		MRABATTEMENT_S: MRABATTEMENT_S.value,
+		MRABATTEMENT_S_DETAIL: MRABATTEMENT_S_DETAIL.value,
 		Q9: Q9.value,
 		Q9_DETAIL: Q9_DETAIL.value,
 		Q10: Q10.value,
@@ -323,17 +332,18 @@ const submitSurvey = async () => {
 	Q2.value = "";
 	Q2qt.value = "";
 	Q2qo.value = "";
-	Q3.value = "";
-	Q3_DETAIL.value = "";
-	Q4.value = "";
-	Q4_DETAIL.value = "";
-	Q5.value = "";
-	Q6.value = "";
-	Q6_DETAIL.value = "";
-	Q7.value = "";
-	Q7qt.value = "";
-	Q7qo.value = "";
-	Q8.value = "";
+	MORIGINE.value = "";
+	MORIGINE_DETAIL.value = "";
+	DESTINATION.value = "";
+	MOTIF_DESTINATION.value = "";
+	MOTIF_DESTINATION_DETAIL.value = "";
+	DEST_FIN.value = "";
+	DEST_FINqt.value = "";
+	DEST_FINqo.value = "";
+	MRABATTEMENT_A.value = "";
+	MRABATTEMENT_A_DETAIL.value = "";
+	MRABATTEMENT_S.value = "";
+	MRABATTEMENT_S_DETAIL.value = "";
 	Q9.value = "";
 	Q9_DETAIL.value = "";
 	Q10.value = "";
@@ -361,17 +371,18 @@ const downloadData = async () => {
 			Q2: "Q2",
 			Q2qt: "Q2qt",
 			Q2qo: "Q2qo",
-			Q3: "Q3",
-			Q3_DETAIL: "Q3_DETAIL",
-			Q4: "Q4",
-			Q4_DETAIL: "Q4_DETAIL",
-			Q5: "Q5",
-			Q6: "Q6",
-			Q6_DETAIL: "Q6_DETAIL",
-			Q7: "Q7",
-			Q7qt: "Q7qt",
-			Q7qo: "Q7qo",
-			Q8: "Q8",
+			MORIGINE: "MORIGINE",
+			MORIGINE_DETAIL: "MORIGINE_DETAIL",
+			DESTINATION: "DESTINATION",
+			MOTIF_DESTINATION: "MOTIF_DESTINATION",
+			MOTIF_DESTINATION_DETAIL: "MOTIF_DESTINATION_DETAIL",
+			DEST_FIN: "DEST_FIN",
+			DEST_FINqt: "DEST_FINqt",
+			DEST_FINqo: "DEST_FINqo",
+			MRABATTEMENT_A: "MRABATTEMENT_A",
+			MRABATTEMENT_A_DETAIL: "MRABATTEMENT_A_DETAIL",
+			MRABATTEMENT_S: "MRABATTEMENT_S",
+			MRABATTEMENT_S_DETAIL: "MRABATTEMENT_S_DETAIL",
 			Q9: "Q9",
 			Q9_DETAIL: "Q9_DETAIL",
 			Q10: "Q10",
@@ -399,17 +410,18 @@ const downloadData = async () => {
 				Q2: docData.Q2 || "",
 				Q2qt: docData.Q2qt || "",
 				Q2qo: docData.Q2qo || "",
-				Q3: docData.Q3 || "",
-				Q3_DETAIL: docData.Q3_DETAIL || "",
-				Q4: docData.Q4 || "",
-				Q4_DETAIL: docData.Q4_DETAIL || "",
-				Q5: docData.Q5 || "",
-				Q6: docData.Q6 || "",
-				Q6_DETAIL: docData.Q6_DETAIL || "",
-				Q7: docData.Q7 || "",
-				Q7qt: docData.Q7qt || "",
-				Q7qo: docData.Q7qo || "",
-				Q8: docData.Q8 || "",
+				MORIGINE: docData.MORIGINE || "",
+				MORIGINE_DETAIL: docData.MORIGINE_DETAIL || "",
+				DESTINATION: docData.DESTINATION || "",
+				MOTIF_DESTINATION: docData.MOTIF_DESTINATION || "",
+				MOTIF_DESTINATION_DETAIL: docData.MOTIF_DESTINATION_DETAIL || "",
+				DEST_FIN: docData.DEST_FIN || "",
+				DEST_FINqt: docData.DEST_FINqt || "",
+				DEST_FINqo: docData.DEST_FINqo || "",
+				MRABATTEMENT_A: docData.MRABATTEMENT_A || "",
+				MRABATTEMENT_A_DETAIL: docData.MRABATTEMENT_A_DETAIL || "",
+				MRABATTEMENT_S: docData.MRABATTEMENT_S || "",
+				MRABATTEMENT_S_DETAIL: docData.MRABATTEMENT_S_DETAIL || "",
 				Q9: docData.Q9 || "",
 				Q9_DETAIL: docData.Q9_DETAIL || "",
 				Q10: docData.Q10 || "",
